@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load dajaxice_templatetags %}
+<html lang="en">
+    <head>
+        {% dajaxice_js_import %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>大平台报销系统</title>
+        <!-- JavaScript Config. -->
+        
+        <meta charset="UTF-8">
+        <title>大平台报销系统</title>
+        
+		<link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.min.css" />
+        <script type='text/javascript' src="{{STATIC_URL}}js/jquery-3.2.1.min.js"></script>
+        <script type='text/javascript' src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+        
+
+        {% block before_css %}{% endblock  %}
+        {% block before_js %}{% endblock %}
+        
+    </head>
+
+    <body >
+        {% block container %}{% endblock %}
+        {% block end_js %} {% endblock %}
+    </body>
+</html>

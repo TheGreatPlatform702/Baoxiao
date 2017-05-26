@@ -1,0 +1,12 @@
+{% extends "base/base.html" %}
+
+{% block container%}
+<div class = "header">
+    <div class = "welcome">
+        hello　{{username}}
+    </div>
+    <div class = "function">
+        <a href="/logout" class="btn btn-primary">注销</a>
+    </div>
+</div>
+{% endblock %}

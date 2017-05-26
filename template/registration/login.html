@@ -1,0 +1,37 @@
+{% extends "base/base.html"%}
+
+{% block before_css %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}css/login.css"/>
+{% endblock %}
+
+{% block container%}
+<div id="frame">
+            <div id="title">
+                <h2>大平台报销系统</h2>
+            </div>
+            <div id="con">
+                <form name="id" id="loginform">
+                    {% csrf_token %}
+                    <div class="form-group" >
+                        <div class="input-group" >                       
+                            {{form.student_number}}                
+                        </div>
+                        <div class="input-group" >                
+                            {{form.password}}
+                        </div>
+                        <div class="input-group">                
+                            {{form.role}}     
+                        </div>
+                    </div>
+                    <div>
+                        <button type = 'button' id = "login-btn" class="btn btn-primary btn-lg" >登录</button>
+                        <a id = "reg-btn" href="/register" class="btn btn-primary btn-lg" >注册</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}
+
+{% block end_js %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/login.js"></script>
+{% endblock %}

@@ -1,0 +1,17 @@
+
+    <table class = "table table-striped">
+        <tr>
+            <th>姓名</th>
+            <th>发票数量</th>
+            <th>总额</th>
+            <th>日期</th>
+        </tr>
+        {% for result in result_list %}
+        <tr>
+            <td>{{result.user.username}}</td>
+            <td>{{result.total_bills}}</td>
+            <td>{{result.total_money}}</td>
+            <td>{{result.date|date:'Y-m-j'}}</td>
+        </tr>
+        {% endfor%}
+    </table>

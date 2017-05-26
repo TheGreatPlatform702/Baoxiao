@@ -1,0 +1,43 @@
+{% extends "base/base.html"%}
+
+{% block before_css %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}css/login.css"/>
+{% endblock %}
+
+{% block container%}
+<div id="frame">
+        <div id="title">
+            <h2>大平台报销系统</h2>
+        </div>
+        <div id="con">
+            <form name="id" id="reg-form">
+                {% csrf_token %}
+                <div class="form-group" >
+                    <div class="input-group" >
+                        <span class="input-group-addon" id="basic-addon1">姓名</span>                       
+                        {{form.name}}                
+                    </div>
+                    <div class="input-group" >
+                        <span class="input-group-addon" id="basic-addon1">学号</span>                       
+                        {{form.student_number}}                
+                    </div>
+                    <div class="input-group" >
+                        <span class="input-group-addon" id="basic-addon1">密码</span>                
+                        {{form.password}}
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">确认密码</span>                
+                        {{form.confirm_password}}     
+                    </div>
+                </div>
+                <div>
+                    <button type = 'button' id = "reg-btn" class="btn btn-primary btn-lg" >注册</button>
+                </div>
+            </form>
+        </div>
+</div>
+{% endblock %}
+
+{% block end_js %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/reg.js"></script>
+{% endblock %}

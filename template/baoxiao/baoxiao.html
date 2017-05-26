@@ -1,0 +1,41 @@
+{% extends "base/_base.html" %}
+
+{% block before_css %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}css/baoxiao.css"/>
+{% endblock %}
+
+{% block container%}
+{{ block.super }}
+
+<div class="forms container">
+    <div class="row">
+        <div class="col-md-2">项目</div>
+        <div class="col-md-3">关键词</div>
+        <div class="col-md-2">单据数</div>
+        <div class="col-md-2">金额</div>
+        <div class="col-md-3">描述</div>
+    </div>
+    {% for item, description, form in forms %}
+    <div class="row">
+        <form class = "baoxiao-form">
+            <span class="col-md-2">{{item}}</span>
+            <span class="col-md-3">{{form.keyword}}</span>
+            <span class="col-md-2">{{form.bill_amount}}</span>
+            <span class="col-md-2">{{form.money}}</span>
+            <span class="col-md-3">{{description}}</span>
+        </form>
+    </div>
+    {% endfor%}
+</div>
+
+
+<center>
+    <button id = "baoxiao-submit-btn" class="btn btn-primary btn-md">提交</button>
+</center>
+
+</div>
+{% endblock %}
+
+{% block end_js %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/baoxiao.js"></script>
+{% endblock %}
