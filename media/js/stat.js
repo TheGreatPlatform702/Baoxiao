@@ -11,6 +11,6 @@ function search_callback(data){
     if(data['statu'] == 0) {
         $('.result-table').html(data['html']);
     } else {
-        alert('Something wrong');
+        alert('请检查输入');
     }
 }
