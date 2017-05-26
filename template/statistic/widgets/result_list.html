@@ -5,13 +5,22 @@
             <th>发票数量</th>
             <th>总额</th>
             <th>日期</th>
+            <th>给钱</th>
         </tr>
         {% for result in result_list %}
-        <tr>
+        <tr iid = {{result.id}}>
             <td>{{result.user.username}}</td>
             <td>{{result.total_bills}}</td>
             <td>{{result.total_money}}</td>
             <td>{{result.date|date:'Y-m-j'}}</td>
+            <td>
+                {% ifequal result.have_payed 0 %}
+                <button class='btn btn-primary pay-btn'>给钱</button>
+                {% endifequal %}
+                {% ifequal result.have_payed 1 %}
+                已付
+                {% endifequal %}
+            </td>
         </tr>
         {% endfor%}
     </table>

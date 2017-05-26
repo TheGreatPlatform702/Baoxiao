@@ -1,4 +1,5 @@
 #coding=utf8
+from const import PAY_STATUS
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -43,6 +44,7 @@ class BaoXiaoTable(models.Model):
 
     total_bills = models.IntegerField(verbose_name = u'总单据数', blank = False, null = False, default = 0)
     total_money = models.FloatField(verbose_name = u'总额', blank = False, null = False, default = 0.0)
+    have_payed = models.IntegerField(verbose_name = u'是否给钱', blank = True, null = False, default = 0, choices = PAY_STATUS)
 
     class Meta:
         verbose_name = u'报销单'

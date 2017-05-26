@@ -14,3 +14,10 @@ function search_callback(data){
         alert('请检查输入');
     }
 }
+
+$(document).on('click', '.pay-btn', function(){
+    var tr = $(this).closest("tr");
+    var form = $("#search-form").serialize(true);
+    var bid = tr.attr("iid");
+    Dajaxice.statistic.pay(pay_callback, {'id': bid, 'form': form});
+})

@@ -39,11 +39,10 @@ def createUserQ(student_name, student_number):
     else:
         return Q()
 
-@dajaxice_register
-def search(request, form):
+def getSearchResult(form):
     form = SearchForm(deserialize_form(form))
     statu = 0
-    result = None
+    baoxiao_tables = None
     if form.is_valid():
         start_date = form.cleaned_data['start_date']
         end_date = form.cleaned_data['end_date']
@@ -51,17 +50,33 @@ def search(request, form):
         name = form.cleaned_data['student_name']
         stno = form.cleaned_data['student_number']
         q_name_stno = createUserQ(name, stno)
-    
-        baoxiao_tables = BaoXiaoTable.objects.filter(q_date_range & q_name_stno)
-        baoxiao_tables_html = render_to_string('statistic/widgets/result_list.html', {
-            'result_list': baoxiao_tables
-        })
-        result = baoxiao_tables_html
+        baoxiao_tables = BaoXiaoTable.objects.filter(q_date_range & q_name_stno).order_by('-date')
     else:
         statu = 1
-    
+    return statu, baoxiao_tables
+
+@dajaxice_register
+def search(request, form):
+    statu, tables = getSearchResult(form)
+    if statu == 0:
+        result_html = render_to_string('statistic/widgets/result_list.html', {
+            'result_list': tables
+        })
+    else:
+        result_html = None
+
     context = {
         'statu': statu,
-        'html': result
+        'html': result_html
     }
     return simplejson.dumps(context)
+
+@dajaxice_register
+def pay(request, bid, form):
+    baoxiao_table = BaoXiaoTable.objects.get(id = bid)
+    baoxiao_table.have_payed = 1
+    baoxiao_table.save()
+    
+    
+
+    

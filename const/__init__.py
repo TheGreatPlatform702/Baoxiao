@@ -7,6 +7,15 @@ ROLE_CHOICE = (
     (COMMOM_USER, u'普通用户')
 )
 
+PAYED = 1
+UNPAYED = 0
+
+PAY_STATUS = (
+    (PAYED, u'已付'),
+    (UNPAYED, u'未付')
+)
+
+
 ITEMS = (
     (u'日常办公用品', u'日常办公用品支出,如复印纸，文具等'),
     (u'书报杂志订阅费', u'购买书报杂志，资料册等支出'),
