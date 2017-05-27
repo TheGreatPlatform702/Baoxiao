@@ -55,15 +55,18 @@ def getSearchResult(form):
         statu = 1
     return statu, baoxiao_tables
 
-@dajaxice_register
-def search(request, form):
-    statu, tables = getSearchResult(form)
-    if statu == 0:
+def getResultHtml(statu, tables):
+    if statu == 1: return None
+    else:
         result_html = render_to_string('statistic/widgets/result_list.html', {
             'result_list': tables
         })
-    else:
-        result_html = None
+        return result_html
+
+@dajaxice_register
+def search(request, form):
+    statu, tables = getSearchResult(form)
+    result_html = getResultHtml(statu, tables)
 
     context = {
         'statu': statu,
@@ -76,7 +79,12 @@ def pay(request, bid, form):
     baoxiao_table = BaoXiaoTable.objects.get(id = bid)
     baoxiao_table.have_payed = 1
     baoxiao_table.save()
-    
-    
+    statu, tables = getSearchResult(form)
+    result_html = getResultHtml(statu, tables)
+    context = {
+        'statu': statu,
+        'html': result_html
+    }
+    return simplejson.dumps(context)
 
     

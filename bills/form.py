@@ -61,9 +61,9 @@ class SmallBaoxiaoForm(ModelForm):
     class Meta:
         model = DetailMoney
         widgets = {
-            'keyword': forms.TextInput(),
-            'bill_amount': forms.TextInput(),
-            'money': forms.TextInput()
+            'keyword': forms.TextInput(attrs={'class':'form-control'}),
+            'bill_amount': forms.TextInput(attrs={'class':'form-control'}),
+            'money': forms.TextInput(attrs={'class':'form-control'})
         }
 
 class LoginForm(forms.Form):

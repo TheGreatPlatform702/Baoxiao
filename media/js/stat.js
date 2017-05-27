@@ -19,5 +19,13 @@ $(document).on('click', '.pay-btn', function(){
     var tr = $(this).closest("tr");
     var form = $("#search-form").serialize(true);
     var bid = tr.attr("iid");
-    Dajaxice.statistic.pay(pay_callback, {'id': bid, 'form': form});
+    Dajaxice.statistic.pay(pay_callback, {'bid': bid, 'form': form});
 })
+
+function pay_callback(data){
+    if(data['statu'] == 0) {
+        $('.result-table').html(data['html']);
+    } else {
+        alert('请检查查询关键字');
+    }
+}
