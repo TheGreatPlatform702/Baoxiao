@@ -12,7 +12,6 @@ from registration.models import Administrator, CommonUser
 def isRightRole(request, users, password):
     if users:
         user = auth.authenticate(username = users[0].user.username, password = password)
-        print user.username
         if user:
             auth.login(request, user)
             return True

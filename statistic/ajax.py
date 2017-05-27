@@ -24,7 +24,7 @@ def createDateRangeQ(start_date, end_date):
 def createUserQ(student_name, student_number):
     uesr = []; common_user = []
     if student_name:
-        user = User.objects.filter(username = student_name)
+        user = User.objects.filter(first_name = student_name)
     if student_number:
         common_user = CommonUser.objects.filter(student_number = student_number)
     
@@ -71,6 +71,53 @@ def search(request, form):
     context = {
         'statu': statu,
         'html': result_html
+    }
+    return simplejson.dumps(context)
+
+@dajaxice_register
+def stat(request, form):
+    statu, tables = getSearchResult(form)
+    tongji = [
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+        ['', '', 0, 0, ''],
+    ]
+
+    for i in range(len(ITEMS)):
+        tongji[i][0] = ITEMS[i][0]
+        tongji[i][-1] = ITEMS[i][1]
+
+    # tongji[0][1] = '1'
+
+    for table in tables:
+        for i in range(len(ITEMS)):
+            tongji[i][1] += ' %s' % eval('table.%s.keyword' % FIELDS[i]).strip()
+            tongji[i][2] += eval('table.%s.bill_amount' % FIELDS[i])
+            tongji[i][3] += eval('table.%s.money' % FIELDS[i])
+
+    html = render_to_string('statistic/widgets/tongji.html', {'tongji_table': tongji})
+
+    context = {
+        'statu': statu,
+        'html': html
     }
     return simplejson.dumps(context)
 

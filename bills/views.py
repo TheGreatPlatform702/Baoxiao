@@ -17,7 +17,7 @@ def create(request):
         forms.append((ITEMS[i][0], ITEMS[i][1], SmallBaoxiaoForm()))
     context = {
         "forms": forms, 
-        "username": request.user.username,
+        "username": request.user.first_name,
     }
     return render(request, 'baoxiao/baoxiao.html', context)
 
@@ -26,7 +26,7 @@ def showList(request):
     # html = render_to_string('bills/widgets/table_list.html', baoxiao_tables)
     context = {
         'baoxiao_tables': baoxiao_tables,
-        'username': request.user.username,
+        'username': request.user.first_name,
         "role": 'commonuser'
     }
     return render(request, 'baoxiao/baoxiao_list.html', context)
@@ -39,7 +39,7 @@ def modify(request, bid):
         forms.append((ITEMS[i][0], ITEMS[i][1], form[i]))
     context = {
         'forms': forms,
-        'username': request.user.username,
+        'username': request.user.first_name,
         'id': baoxiao_table.id
     }
     return render(request, 'baoxiao/baoxiao.html', context)

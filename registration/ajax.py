@@ -35,12 +35,12 @@ def register(request, form):
         st_no = int(form.cleaned_data['student_number'])
         password = form.cleaned_data['password']
         try:
-            user = User(username = name)
+            user = User(username = st_no, first_name = name)
             user.set_password(password)
             user.save()
             common_user = CommonUser(user = user, student_number = st_no)
             common_user.save()
-            user = auth.authenticate(username = name, password = password)
+            user = auth.authenticate(username = st_no, password = password)
             if user: auth.login(request, user)
         except Exception, e:
             print e

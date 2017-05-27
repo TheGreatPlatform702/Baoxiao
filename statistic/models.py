@@ -51,4 +51,4 @@ class BaoXiaoTable(models.Model):
         verbose_name_plural = u'报销单'
 
     def __unicode__(self):
-        return u'%s %s(%d张发票，总共%d元)' % (self.date.isoformat(), self.user.username, self.total_bills, self.total_money)
+        return u'%s %s(%d张发票，总共%d元)' % (self.date.isoformat(), self.user.first_name, self.total_bills, self.total_money)

@@ -39,3 +39,27 @@ ITEMS = (
     (u'软件购置费', u'构建信息网络方面的费用，单件8000元以上的．．．'),
     (u'住宿费', u''),
 )
+
+FIELDS = (
+    'office_supplies',
+    'book',
+    'printing',
+    'handling_charge',
+    'post',
+    'phone',
+    'internet',
+    'traffic',
+    'maintenance',
+    'conference',
+    'material',
+    'cooperation',
+    'thirdpart',
+    'school_management',
+    'base_management',
+    'water_electric',
+    'other',
+    'rent',
+    'specific_facility',
+    'software',
+    'hotel'
+)

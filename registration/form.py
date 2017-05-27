@@ -12,8 +12,17 @@ class LoginForm(forms.Form):
         self.fields["role"].choices = ROLE_CHOICE
 
 class RegisterForm(forms.Form):
-    name = forms.CharField(widget = forms.TextInput(attrs={'class':'form-control'}))
-    student_number = forms.IntegerField(widget = forms.TextInput(attrs={'class':'form-control'}))
-    password = forms.CharField(widget = forms.PasswordInput(attrs={'class':'form-control'}))
-    confirm_password = forms.CharField(widget = forms.PasswordInput(attrs={'class':'form-control'}))
+    name = forms.CharField(
+        widget = forms.TextInput(attrs={'class':'form-control', 'placeholder':'姓名'})
+    )
+    student_number = forms.IntegerField(
+        widget = forms.TextInput(attrs={'class':'form-control', 'placeholder': '学号'})
+    )
+    password = forms.CharField(
+        widget = forms.PasswordInput(attrs={'class':'form-control', 'placeholder' : '密码'})
+    )
+    confirm_password = forms.CharField(
+        widget = forms.PasswordInput(attrs={'class':'form-control', 'placeholder' : '密码确认'})
+    )
+    
 

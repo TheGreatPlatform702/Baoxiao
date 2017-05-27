@@ -1,0 +1,18 @@
+<table class = "table table-striped result-list">
+    <tr>
+        <th>项目</th>
+        <th>关键词</th>
+        <th>单据数</th>
+        <th>总额</th>
+        <th>描述</th>
+    </tr>
+    {% for item, keyword, bills, money, description in tongji_table %}
+    <tr>
+        <td>{{item}}</td>
+        <td>{{keyword}}</td>
+        <td>{{bills}}</td>
+        <td>{{money}}</td>
+        <td>{{description}}</td>
+    </tr>
+    {% endfor%}
+</table>

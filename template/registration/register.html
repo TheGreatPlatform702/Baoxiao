@@ -5,36 +5,35 @@
 {% endblock %}
 
 {% block container%}
-<div id="frame">
+<div class="container margin-top">
+    <center>
         <div id="title">
             <h2>大平台报销系统</h2>
         </div>
-        <div id="con">
+        <div class = "login-form-div">
             <form name="id" id="reg-form">
                 {% csrf_token %}
                 <div class="form-group" >
-                    <div class="input-group" >
-                        <span class="input-group-addon" id="basic-addon1">姓名</span>                       
+                    <div class="form-group" >                       
                         {{form.name}}                
                     </div>
-                    <div class="input-group" >
-                        <span class="input-group-addon" id="basic-addon1">学号</span>                       
+                    <div class="form-group" >                     
                         {{form.student_number}}                
                     </div>
-                    <div class="input-group" >
-                        <span class="input-group-addon" id="basic-addon1">密码</span>                
+                    <div class="form-group" >           
                         {{form.password}}
                     </div>
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">确认密码</span>                
+                    <div class="form-group">             
                         {{form.confirm_password}}     
                     </div>
                 </div>
                 <div>
-                    <button type = 'button' id = "reg-btn" class="btn btn-primary btn-lg" >注册</button>
+                    <a href="/login", class="btn btn-primary btn-md">登录</a>
+                    <button type = 'button' id = "reg-btn" class="btn btn-primary btn-md" >注册</button>
                 </div>
             </form>
         </div>
+    </center>
 </div>
 {% endblock %}
 

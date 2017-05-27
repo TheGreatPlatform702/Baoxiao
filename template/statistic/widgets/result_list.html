@@ -1,5 +1,5 @@
 
-    <table class = "table table-striped">
+    <table class = "table table-striped result-list">
         <tr>
             <th>姓名</th>
             <th>发票数量</th>
@@ -9,7 +9,7 @@
         </tr>
         {% for result in result_list %}
         <tr iid = {{result.id}}>
-            <td>{{result.user.username}}</td>
+            <td>{{result.user.first_name}}</td>
             <td>{{result.total_bills}}</td>
             <td>{{result.total_money}}</td>
             <td>{{result.date|date:'Y-m-j'}}</td>
