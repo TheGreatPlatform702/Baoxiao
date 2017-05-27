@@ -1,0 +1,22 @@
+{% extends "base/_base.html" %}
+
+{% block before_css %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}css/baoxiao.css"/>
+{% endblock %}
+
+{% block container %}
+{{ block.super }}
+
+<div class="list-div container">
+    <div class="list-header">
+        <h2>历史记录</h2>
+    </div>
+    {% include "baoxiao/widgets/table_list.html" %}
+</div>
+
+</div>
+{% endblock %}
+
+{% block end_js %}
+    <script type="text/javascript" src="{{STATIC_URL}}js/baoxiao.js"></script>
+{% endblock %}

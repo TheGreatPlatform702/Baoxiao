@@ -11,7 +11,7 @@ from django.contrib import auth
 from statistic.models import BaoXiaoTable
 
 @dajaxice_register
-def baoxiao(request, forms):
+def baoxiao(request, forms, bid):
     forms = [ SmallBaoxiaoForm(deserialize_form(x)) for x in forms]
     statu = -1
     for i in range(len(forms)):
@@ -25,8 +25,10 @@ def baoxiao(request, forms):
         for form in forms:
             total_bills += form.cleaned_data['bill_amount']
             total_money += form.cleaned_data['money']
-
-        baoxiao_table = BaoXiaoTable(user = request.user)
+        if bid:
+            baoxiao_table = BaoXiaoTable.objects.get(id = bid)
+        else:
+            baoxiao_table = BaoXiaoTable(user = request.user)
         baoxiao_table.office_supplies = forms[0].save()
         baoxiao_table.book = forms[1].save()
         baoxiao_table.printing = forms[2].save()

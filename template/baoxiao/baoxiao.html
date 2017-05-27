@@ -4,9 +4,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}css/baoxiao.css"/>
 {% endblock %}
 
-
-
-{% block container%}
+{% block container %}
 {{ block.super }}
 
 <div class="forms container">
@@ -31,7 +29,7 @@
 </div>
 
 <center class ='baoxiao-submit-div'>
-    <button id = "baoxiao-submit-btn" class="btn btn-primary btn-md">提交</button>
+    <button id = "baoxiao-submit-btn" iid="{{id}}" class="btn btn-primary btn-md">提交</button>
 </center>
 
 </div>

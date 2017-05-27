@@ -15,5 +15,9 @@ from statistic.models import BaoXiaoTable
 def home(request):
     form = SearchForm()
     result_list = BaoXiaoTable.objects.all().order_by('-date')[0:20]
-    context = {"username": request.user.username, "form": form, "result_list": result_list}
+    context = {
+        "username": request.user.username, 
+        "form": form, "result_list": result_list,
+        "role": 'commonuser'
+    }
     return render(request, 'statistic/stat.html', context)

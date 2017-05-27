@@ -1,0 +1,24 @@
+
+    <table class = "table table-striped">
+        <tr>
+            <th>日期</th>
+            <th>发票数量</th>
+            <th>总额</th>
+            <th>修改</th>
+        </tr>
+        {% for table in baoxiao_tables %}
+        <tr iid = {{table.id}}>
+            <td>{{table.date|date:'Y-m-j'}}</td>
+            <td>{{table.total_bills}}</td>
+            <td>{{table.total_money}}</td>
+            <td>
+                {% ifequal table.have_payed 0 %}
+                <a class='btn btn-primary' href="{% url detail_table table.id%}">修改</a>
+                {% endifequal %}
+                {% ifequal table.have_payed 1 %}
+                不可修改
+                {% endifequal %}
+            </td>
+        </tr>
+        {% endfor%}
+    </table>
