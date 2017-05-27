@@ -39,7 +39,7 @@ def jump(request):
     if isAdministrator(request):
         return HttpResponseRedirect('/statistic')
     else:
-        return HttpResponseRedirect('/baoxiao')
+        return HttpResponseRedirect('/baoxiao/list')
 
 def haveLogined(request):
     if request.user.is_authenticated():
